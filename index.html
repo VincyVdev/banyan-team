@@ -3,122 +3,264 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Banyan | Team</title>
+  <title>Banyan | Meet the Team</title>
   <style>
+    :root {
+      --bg: #f6f8fb;
+      --surface: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --soft: #6b7280;
+      --line: #e5e7eb;
+      --accent: #111827;
+      --accent-soft: #eef2f7;
+      --shadow: 0 16px 40px rgba(17, 24, 39, 0.08);
+      --radius: 24px;
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background: #ffffff;
-      color: #111827;
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #fbfcfe 0%, #f6f8fb 100%);
+      color: var(--text);
       line-height: 1.6;
     }
 
     .container {
-      max-width: 800px;
+      width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
     }
 
+    .page {
+      padding: 40px 0 72px;
+    }
+
+    .hero {
+      background: var(--surface);
+      border: 1px solid rgba(229, 231, 235, 0.9);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      padding: 52px 48px;
+      margin-bottom: 34px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--soft);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
     h1 {
-      font-size: 28px;
-      margin-bottom: 6px;
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      max-width: 760px;
     }
 
-    h2 {
-      margin-top: 36px;
-      border-bottom: 1px solid #e5e7eb;
-      padding-bottom: 6px;
-      font-size: 20px;
+    .hero p {
+      margin: 16px 0 0;
+      max-width: 720px;
+      font-size: 1.06rem;
+      color: var(--muted);
     }
 
-    h3 {
-      margin-top: 22px;
-      margin-bottom: 4px;
-      font-size: 16px;
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin: 0 0 18px;
     }
 
-    p {
-      margin: 6px 0 12px;
-      font-size: 14px;
+    .section-head h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      letter-spacing: -0.03em;
     }
 
-    ul {
-      margin: 6px 0 14px 18px;
-      font-size: 14px;
+    .section-head p {
+      margin: 0;
+      color: var(--soft);
+      max-width: 520px;
     }
 
-    li {
-      margin-bottom: 6px;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .role {
+      margin: 0 0 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--soft);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.45rem;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .card p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 0.98rem;
     }
 
     .hiring {
-      margin-top: 40px;
-      padding-top: 16px;
-      border-top: 1px solid #e5e7eb;
+      margin-top: 28px;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 30px;
+    }
+
+    .hiring h2 {
+      margin: 0 0 10px;
+      font-size: 1.75rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hiring p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 720px;
     }
 
     .button {
       display: inline-block;
-      margin-top: 10px;
-      padding: 8px 14px;
-      background: #111827;
+      margin-top: 18px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: var(--accent);
       color: #ffffff;
       text-decoration: none;
-      border-radius: 4px;
-      font-size: 13px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 860px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 8px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding-top: 20px;
+      }
+
+      .hero {
+        padding: 32px 24px;
+        border-radius: 24px;
+      }
+
+      .card,
+      .hiring {
+        padding: 22px;
+        border-radius: 20px;
+      }
+
+      .container {
+        width: min(var(--max), calc(100% - 20px));
+      }
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
+  <div class="page">
+    <div class="container">
+      <section class="hero">
+        <div class="eyebrow">Banyan</div>
+        <h1>Meet the Team</h1>
+        <p>
+          Banyan is a consumer fintech platform for NRIs and OCIs, focused on simplifying how people manage money across countries. We’re building a single, digital-first experience that brings together banking, payments, and financial workflows that today feel fragmented and difficult to navigate.
+        </p>
+      </section>
 
-    <h1>Banyan</h1>
-    <p>Banyan is a consumer fintech platform for NRIs and OCIs.</p>
+      <section>
+        <div class="section-head">
+          <h2>Meet the Team</h2>
+          <p>Experience across engineering, product, and design.</p>
+        </div>
 
-    <h2>Team</h2>
+        <div class="grid">
+          <article class="card">
+            <p class="role">Engineering</p>
+            <h3>Vikas Gorur</h3>
+            <p>
+              Founding engineer with deep experience in distributed systems and fintech infrastructure. Previously worked on Gluster (acquired by Red Hat), payments infrastructure at Twitter, and was Head of Engineering at Airbase.
+            </p>
+          </article>
 
-    <h3>Vikas Gorur — Engineering</h3>
-    <p>Founding engineer with experience in distributed systems and fintech infrastructure.</p>
-    <ul>
-      <li>Core contributor to Gluster (acquired by Red Hat)</li>
-      <li>Worked on Ads payments at Twitter</li>
-      <li>Head of Engineering at Airbase (acquired by Paylocity)</li>
-    </ul>
+          <article class="card">
+            <p class="role">Engineering</p>
+            <h3>Rashmi Ramesh</h3>
+            <p>
+              Engineering leader with experience building large-scale distributed systems. Previously led teams at Confluent, worked on Manhattan at Twitter (more than 100M requests per second), and contributed to storage systems at Microsoft.
+            </p>
+          </article>
 
-    <h3>Rashmi Ramesh — Engineering</h3>
-    <p>Engineering leader with experience building large-scale distributed systems.</p>
-    <ul>
-      <li>Led Events & Data team at Confluent</li>
-      <li>Led Manhattan DB at Twitter (>100M RPS)</li>
-      <li>Worked on Redis and caching infrastructure</li>
-      <li>Worked on storage systems at Microsoft</li>
-    </ul>
+          <article class="card">
+            <p class="role">Product Design</p>
+            <h3>Shawn Park</h3>
+            <p>
+              Product design leader focused on building and scaling user experiences. Previously Senior Staff Designer at Discord and founding designer at Airbase.
+            </p>
+          </article>
 
-    <h3>Shawn Park — Product Design</h3>
-    <p>Product design leader focused on user experience and scaling products.</p>
-    <ul>
-      <li>Senior Staff Designer at Discord</li>
-      <li>Led Mobile, Gaming, and Communities</li>
-      <li>Founding Designer at Airbase</li>
-    </ul>
+          <article class="card">
+            <p class="role">Product</p>
+            <h3>Kaushal Sanghavi</h3>
+            <p>
+              Product and business leader with 20+ years of experience in fintech and SaaS. Previously led product at RazorpayX, worked at Amazon, and has experience across the full product lifecycle.
+            </p>
+          </article>
+        </div>
+      </section>
 
-    <h3>Kaushal Sanghavi — Product</h3>
-    <p>Product and business leader with experience in fintech and SaaS.</p>
-    <ul>
-      <li>Head of Product at RazorpayX ($30B GMV)</li>
-      <li>Product leadership at Airbase</li>
-      <li>Previously at Amazon (Kindle & Fulfillment)</li>
-      <li>UC Berkeley and ISB</li>
-    </ul>
-
-    <div class="hiring">
-      <h2>Hiring</h2>
-      <p>We’re hiring across engineering, product, and design.</p>
-      <a href="https://jobs.ashbyhq.com/stealth-startup" target="_blank" class="button">
-        View Open Roles
-      </a>
+      <section class="hiring">
+        <h2>We’re Hiring</h2>
+        <p>
+          We’re hiring across engineering, product, and design. If you’re interested in working on cross-border financial infrastructure, we’d love to hear from you.
+        </p>
+        <a href="https://jobs.ashbyhq.com/stealth-startup" target="_blank" rel="noopener noreferrer" class="button">View Open Roles</a>
+      </section>
     </div>
-
   </div>
 </body>
 </html>
