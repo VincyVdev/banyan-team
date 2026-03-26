@@ -2,62 +2,292 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Banyan | Meet the Team</title>
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: rgba(255,255,255,0.04);
+      --panel-border: rgba(255,255,255,0.10);
+      --text: #ffffff;
+      --muted: #cbd5e1;
+      --soft: #94a3b8;
+      --accent: #86efac;
+      --accent-2: #60a5fa;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(34,197,94,0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(59,130,246,0.14), transparent 28%),
+        linear-gradient(to bottom, #0f172a, #020617);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(134,239,172,0.22);
+      background: rgba(134,239,172,0.08);
+      color: #d1fae5;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 4.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 0 0 18px;
+      max-width: 920px;
+    }
+
+    .hero p {
+      max-width: 860px;
+      font-size: 18px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .section {
+      padding: 70px 0;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .section-header .label {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 13px;
+      color: var(--accent);
+      margin: 0 0 10px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .section-header .intro {
+      max-width: 520px;
+      color: var(--soft);
+      margin: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .card,
+    .hiring {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 24px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.22);
+    }
+
+    .card {
+      padding: 28px;
+    }
+
+    .role {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+      margin: 0 0 8px;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .summary {
+      margin: 18px 0 0;
+      color: var(--muted);
+    }
+
+    .footer-section {
+      padding: 0 0 72px;
+    }
+
+    .hiring {
+      padding: 32px;
+      background: linear-gradient(to right, rgba(96,165,250,0.12), rgba(255,255,255,0.03), rgba(134,239,172,0.12));
+    }
+
+    .hiring .label {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 13px;
+      color: var(--accent);
+      margin: 0 0 10px;
+    }
+
+    .hiring h3 {
+      margin: 0 0 12px;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .hiring p {
+      max-width: 780px;
+      color: var(--muted);
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #0f172a;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .grid,
+      .section-header {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .section-header {
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding-top: 48px;
+      }
+
+      .container {
+        width: min(var(--max), calc(100% - 24px));
+      }
+
+      .card,
+      .hiring {
+        border-radius: 18px;
+      }
+
+      .card h3 {
+        font-size: 26px;
+      }
+
+      .hero p,
+      .hiring p {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
+<body>
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Banyan</div>
+      <h1>Meet the Team</h1>
+      <p>
+        Banyan is a consumer fintech platform for NRIs and OCIs, focused on simplifying how people manage money across countries. We’re building a single, digital-first experience that brings together banking, payments, and financial workflows that today feel fragmented and difficult to navigate.
+      </p>
+    </div>
+  </section>
 
-<body style="font-family: Arial; margin: 40px; background:#0f172a; color:white;">
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="label">Meet the Team</p>
+          <h2>Builders across engineering, product, and design.</h2>
+        </div>
+        <p class="intro">
+          Experience across distributed systems, fintech, product, and design.
+        </p>
+      </div>
 
-  <h1>Banyan</h1>
+      <div class="grid">
+        <article class="card">
+          <p class="role">Engineering</p>
+          <h3>Vikas Gorur</h3>
+          <p class="summary">
+            Founding engineer with deep experience in distributed systems and fintech infrastructure. Previously worked on Gluster (acquired by Red Hat), payments infrastructure at Twitter, and was Head of Engineering at Airbase.
+          </p>
+        </article>
 
-  <p><strong>Banyan is a consumer fintech product for NRIs and OCIs.</strong></p>
+        <article class="card">
+          <p class="role">Engineering</p>
+          <h3>Rashmi Ramesh</h3>
+          <p class="summary">
+            Engineering leader with experience building large-scale distributed systems. Previously led teams at Confluent, worked on Manhattan at Twitter (more than 100M requests per second), and contributed to storage systems at Microsoft.
+          </p>
+        </article>
 
-  <hr/>
+        <article class="card">
+          <p class="role">Product Design</p>
+          <h3>Shawn Park</h3>
+          <p class="summary">
+            Product design leader focused on building and scaling user experiences. Previously Senior Staff Designer at Discord and founding designer at Airbase.
+          </p>
+        </article>
 
-  <h2>Meet the Team</h2>
+        <article class="card">
+          <p class="role">Product</p>
+          <h3>Kaushal Sanghavi</h3>
+          <p class="summary">
+            Product and business leader with 20+ years of experience in fintech and SaaS. Previously led product at RazorpayX, worked at Amazon, and has experience across the full product lifecycle.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  <h3>Vikas Gorur — Engineering</h3>
-  <ul>
-    <li>Core contributor to Gluster (acquired by Red Hat)</li>
-    <li>Worked on Ads payments at Twitter</li>
-    <li>Head of Engineering at Airbase (acquired by Paylocity)</li>
-  </ul>
-
-  <h3>Rashmi Ramesh — Engineering</h3>
-  <ul>
-    <li>Led Events & Data team at Confluent</li>
-    <li>Led Manhattan DB at Twitter (>100M RPS)</li>
-    <li>Worked on Redis & caching infra at scale</li>
-    <li>Worked on storage systems at Microsoft</li>
-  </ul>
-
-  <h3>Shawn Park — Product Design</h3>
-  <ul>
-    <li>Senior Staff Designer at Discord</li>
-    <li>Led Mobile, Gaming, Communities</li>
-    <li>Founding Designer at Airbase</li>
-  </ul>
-
-  <h3>Kaushal Sanghavi — Product</h3>
-  <ul>
-    <li>Head of Product at RazorpayX ($30B GMV)</li>
-    <li>Product leader at Airbase</li>
-    <li>Ex-Amazon (Kindle & Fulfillment)</li>
-    <li>UC Berkeley + ISB</li>
-  </ul>
-
-  <hr/>
-
-  <h2>We’re Hiring</h2>
-
-  <p>
-    We’re looking for exceptional builders across engineering, product, and design.
-  </p>
-
-  <a href="https://jobs.ashbyhq.com/stealth-startup" target="_blank"
-     style="display:inline-block; padding:10px 16px; background:white; color:black; text-decoration:none; border-radius:6px;">
-    View Open Roles
-  </a>
-
+  <section class="footer-section">
+    <div class="container">
+      <div class="hiring">
+        <p class="label">We’re Hiring</p>
+        <h3>Join us in building the future of cross-border finance.</h3>
+        <p>
+          We’re hiring across engineering, product, and design. If you’re interested in working on cross-border financial infrastructure, we’d love to hear from you.
+        </p>
+        <a href="https://jobs.ashbyhq.com/stealth-startup" target="_blank" rel="noopener noreferrer" class="button">View Open Roles</a>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
