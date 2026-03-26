@@ -7,24 +7,31 @@
   <style>
     :root {
       --bg: #020617;
-      --panel: rgba(255,255,255,0.04);
-      --panel-border: rgba(255,255,255,0.10);
+      --panel: rgba(255, 255, 255, 0.04);
+      --panel-border: rgba(255, 255, 255, 0.10);
       --text: #ffffff;
       --muted: #cbd5e1;
       --soft: #94a3b8;
       --accent: #86efac;
-      --accent-2: #60a5fa;
       --max: 1120px;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+      --radius: 24px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(34,197,94,0.18), transparent 28%),
-        radial-gradient(circle at top right, rgba(59,130,246,0.14), transparent 28%),
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(59, 130, 246, 0.14), transparent 28%),
         linear-gradient(to bottom, #0f172a, #020617);
       color: var(--text);
       line-height: 1.6;
@@ -37,22 +44,23 @@
 
     .hero {
       padding: 72px 0 48px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .eyebrow {
       display: inline-block;
       padding: 8px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(134,239,172,0.22);
-      background: rgba(134,239,172,0.08);
+      border: 1px solid rgba(134, 239, 172, 0.22);
+      background: rgba(134, 239, 172, 0.08);
       color: #d1fae5;
       font-size: 14px;
+      font-weight: 600;
       margin-bottom: 22px;
     }
 
     h1 {
-      font-size: clamp(2.3rem, 5vw, 4.4rem);
+      font-size: clamp(2.3rem, 5vw, 4.2rem);
       line-height: 1.05;
       letter-spacing: -0.03em;
       margin: 0 0 18px;
@@ -84,11 +92,12 @@
       font-size: 13px;
       color: var(--accent);
       margin: 0 0 10px;
+      font-weight: 600;
     }
 
     h2 {
       margin: 0;
-      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-size: clamp(2rem, 4vw, 3.2rem);
       line-height: 1.1;
       letter-spacing: -0.03em;
     }
@@ -97,11 +106,12 @@
       max-width: 520px;
       color: var(--soft);
       margin: 0;
+      font-size: 16px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px;
     }
 
@@ -109,9 +119,9 @@
     .hiring {
       background: var(--panel);
       border: 1px solid var(--panel-border);
-      border-radius: 24px;
+      border-radius: var(--radius);
       backdrop-filter: blur(8px);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.22);
+      box-shadow: var(--shadow);
     }
 
     .card {
@@ -124,6 +134,7 @@
       font-size: 12px;
       color: var(--accent);
       margin: 0 0 8px;
+      font-weight: 600;
     }
 
     .card h3 {
@@ -136,6 +147,7 @@
     .summary {
       margin: 18px 0 0;
       color: var(--muted);
+      font-size: 16px;
     }
 
     .footer-section {
@@ -144,7 +156,12 @@
 
     .hiring {
       padding: 32px;
-      background: linear-gradient(to right, rgba(96,165,250,0.12), rgba(255,255,255,0.03), rgba(134,239,172,0.12));
+      background: linear-gradient(
+        to right,
+        rgba(96, 165, 250, 0.12),
+        rgba(255, 255, 255, 0.03),
+        rgba(134, 239, 172, 0.12)
+      );
     }
 
     .hiring .label {
@@ -153,11 +170,12 @@
       font-size: 13px;
       color: var(--accent);
       margin: 0 0 10px;
+      font-weight: 600;
     }
 
     .hiring h3 {
       margin: 0 0 12px;
-      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
       line-height: 1.1;
       letter-spacing: -0.03em;
     }
@@ -179,16 +197,22 @@
       text-decoration: none;
       font-weight: 600;
       font-size: 14px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .button:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
     }
 
     @media (max-width: 900px) {
-      .grid,
-      .section-header {
+      .grid {
         grid-template-columns: 1fr;
-        display: grid;
       }
 
       .section-header {
+        display: grid;
+        grid-template-columns: 1fr;
         align-items: start;
       }
     }
@@ -207,12 +231,22 @@
         border-radius: 18px;
       }
 
+      .card {
+        padding: 22px;
+      }
+
+      .hiring {
+        padding: 24px;
+      }
+
       .card h3 {
         font-size: 26px;
       }
 
       .hero p,
-      .hiring p {
+      .hiring p,
+      .summary,
+      .section-header .intro {
         font-size: 16px;
       }
     }
@@ -222,7 +256,7 @@
   <section class="hero">
     <div class="container">
       <div class="eyebrow">Banyan</div>
-      <h1>Meet the Team</h1>
+      <h1>Consumer fintech for NRIs and OCIs</h1>
       <p>
         Banyan is a consumer fintech platform for NRIs and OCIs, focused on simplifying how people manage money across countries. We’re building a single, digital-first experience that brings together banking, payments, and financial workflows that today feel fragmented and difficult to navigate.
       </p>
@@ -246,7 +280,7 @@
           <p class="role">Engineering</p>
           <h3>Vikas Gorur</h3>
           <p class="summary">
-            Founding engineer with deep experience in distributed systems and fintech infrastructure. Previously worked on Gluster (acquired by Red Hat), payments infrastructure at Twitter, and was Head of Engineering at Airbase.
+            Founding engineer with deep expertise in distributed systems and fintech infrastructure. Core contributor to Gluster, acquired by Red Hat in 2011. Previously worked on payment integrations for Ads at Twitter. Founding Engineer and Head of Engineering at Airbase, where he led technical direction from inception through its acquisition by Paylocity in 2024.
           </p>
         </article>
 
@@ -254,7 +288,7 @@
           <p class="role">Engineering</p>
           <h3>Rashmi Ramesh</h3>
           <p class="summary">
-            Engineering leader with experience building large-scale distributed systems. Previously led teams at Confluent, worked on Manhattan at Twitter (more than 100M requests per second), and contributed to storage systems at Microsoft.
+            Engineering leader with extensive experience building internet-scale distributed systems. At Confluent, she led the Events and Data team responsible for metadata and event pipelines across thousands of Kafka, Schema Registry, and Flink clusters. At Twitter, she led teams behind Manhattan, the company’s largest real-time distributed database serving over 100M requests per second, and earlier worked on and managed distributed caching systems including Memcache and Redis. Before that, she worked on core storage and file systems at Microsoft, contributing to foundational infrastructure used in Azure.
           </p>
         </article>
 
@@ -262,7 +296,7 @@
           <p class="role">Product Design</p>
           <h3>Shawn Park</h3>
           <p class="summary">
-            Product design leader focused on building and scaling user experiences. Previously Senior Staff Designer at Discord and founding designer at Airbase.
+            Product design leader focused on building and scaling high-impact user experiences. Senior Staff Product Designer at Discord for over six years, where he led design and strategy across major initiatives including Mobile Redesign, Gaming, and Communities. Previously founding designer at Airbase and founding engineer at Blitz, which was later acquired by Discord.
           </p>
         </article>
 
@@ -270,7 +304,7 @@
           <p class="role">Product</p>
           <h3>Kaushal Sanghavi</h3>
           <p class="summary">
-            Product and business leader with 20+ years of experience in fintech and SaaS. Previously led product at RazorpayX, worked at Amazon, and has experience across the full product lifecycle.
+            Seasoned product and business leader with 20+ years of experience across fintech and B2B SaaS. Head of Product at RazorpayX, where he led multiple product lines including Business Banking and Payroll, scaling the platform to $30B in GMV and profitability. Previously held product leadership roles at Airbase during hyper-growth and spent seven years at Amazon across Seattle and Chennai, leading teams across Kindle and Fulfillment Systems. He also founded his own startup and brings strong technical and operational depth across the full product lifecycle. B.S. in Computer Science from UC Berkeley and MBA from the Indian School of Business.
           </p>
         </article>
       </div>
@@ -280,12 +314,17 @@
   <section class="footer-section">
     <div class="container">
       <div class="hiring">
-        <p class="label">We’re Hiring</p>
-        <h3>Join us in building the future of cross-border finance.</h3>
-        <p>
-          We’re hiring across engineering, product, and design. If you’re interested in working on cross-border financial infrastructure, we’d love to hear from you.
-        </p>
-        <a href="https://jobs.ashbyhq.com/stealth-startup" target="_blank" rel="noopener noreferrer" class="button">View Open Roles</a>
+        <p class="label">Hiring</p>
+        <h3>Ready to join us?</h3>
+        <p>Check out our current open roles.</p>
+        <a
+          href="https://jobs.ashbyhq.com/stealth-startup"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="button"
+        >
+          View Open Positions
+        </a>
       </div>
     </div>
   </section>
